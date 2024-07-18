@@ -76,7 +76,7 @@ const Swap = () => {
 
   useEffect(() => {
     const swing = new SwingSDK({
-      projectId: "replug",
+      projectId: "gtx",
       environment: "production",
       debug: true,
     });
