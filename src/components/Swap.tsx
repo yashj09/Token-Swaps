@@ -326,7 +326,7 @@ const Swap = () => {
             )
           }
         >
-          <SelectTrigger className="w-[180px] bg-zinc-900 w-full">
+          <SelectTrigger className="w-[180px] bg-zinc-900">
             <SelectValue placeholder="Select Route" className="bg-zinc-900" />
           </SelectTrigger>
           <SelectContent className="bg-zinc-900">
