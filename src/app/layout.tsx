@@ -1,7 +1,6 @@
 "use client";
 
 import "styles/globals.css";
-import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import {
   Web3ReactHooks,
