@@ -22,7 +22,6 @@ import {
 import { useToast } from "@/ui/use-toast";
 import { LiaExchangeAltSolid } from "react-icons/lia";
 import { StatusSheet } from "@/ui/StatusSheet";
-import { Loader2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
 import { Input } from "@/ui/input";
 
@@ -58,7 +57,7 @@ const Swap: React.FC = () => {
 
   useEffect(() => {
     const swing = new SwingSDK({
-      projectId: "gtx",
+      projectId: "replug",
       environment: "production",
       debug: true,
     });
@@ -268,7 +267,7 @@ const Swap: React.FC = () => {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto p-4 bg-black rounded-lg shadow-lg">
+    <Card className="w-full max-w-md mx-auto p-4 bg-black rounded-none shadow-lg border-gray-800">
       <CardHeader className="mb-4">
         <CardTitle className="text-2xl font-bold text-center text-white">
           Swap Tokens
@@ -293,16 +292,12 @@ const Swap: React.FC = () => {
                 updateFromTokens(swingSDK!, value as ChainSlug);
               }}
             >
-              <SelectTrigger className="w-full bg-black text-white">
+              <SelectTrigger className="w-full bg-black text-white rounded-none shadow-lg border-gray-800">
                 <SelectValue placeholder="From Chain" />
               </SelectTrigger>
               <SelectContent className="bg-black text-white ">
                 {availableChains.map((chain) => (
-                  <SelectItem
-                    className="hover:bg-gray-700"
-                    key={chain.slug}
-                    value={chain.slug}
-                  >
+                  <SelectItem key={chain.slug} value={chain.slug}>
                     {chain.name}
                   </SelectItem>
                 ))}
@@ -326,7 +321,7 @@ const Swap: React.FC = () => {
                 updateBalance();
               }}
             >
-              <SelectTrigger className="w-full bg-black text-white">
+              <SelectTrigger className="w-full bg-black text-white rounded-none shadow-lg border-gray-800">
                 <SelectValue placeholder="From Token" />
               </SelectTrigger>
               <SelectContent className="bg-black text-white">
@@ -362,7 +357,7 @@ const Swap: React.FC = () => {
                 updateToTokens(swingSDK!, value as ChainSlug);
               }}
             >
-              <SelectTrigger className="w-full bg-black text-white">
+              <SelectTrigger className="w-full bg-black text-white rounded-none shadow-lg border-gray-800">
                 <SelectValue placeholder="To Chain" />
               </SelectTrigger>
               <SelectContent className="bg-black text-white">
@@ -390,7 +385,7 @@ const Swap: React.FC = () => {
                 }))
               }
             >
-              <SelectTrigger className="w-full bg-black text-white">
+              <SelectTrigger className="w-full bg-black text-white rounded-none shadow-lg border-gray-800">
                 <SelectValue placeholder="To Token" />
               </SelectTrigger>
               <SelectContent className="bg-black text-white">
@@ -414,7 +409,7 @@ const Swap: React.FC = () => {
           <Input
             id="amount"
             type="number"
-            className="bg-black text-white"
+            className="bg-black text-white rounded-none shadow-lg border-gray-800"
             placeholder="0"
             value={transferParams.amount}
             onChange={(e) => {
@@ -441,12 +436,12 @@ const Swap: React.FC = () => {
 
         {isConnected ? (
           <Button
-            className="w-full mt-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200"
+            className="w-full mt-4 py-2 bg-white text-black  hover:bg-gray-200 rounded-none"
             disabled={isLoading}
             onClick={() => (transferRoute ? startTransfer() : getQuote())}
           >
             {isLoading ? (
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              <div className="text-black">Loading...</div>
             ) : transferRoute ? (
               "Swap"
             ) : (
@@ -455,7 +450,7 @@ const Swap: React.FC = () => {
           </Button>
         ) : (
           <Button
-            className="w-full mt-4 py-2 bg-white text-black rounded-lg hover:bg-gray-200"
+            className="w-full mt-4 py-2 bg-white text-black hover:bg-gray-200 rounded-none"
             disabled={isLoading}
             onClick={connectWallet}
           >
