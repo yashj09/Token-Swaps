@@ -1,43 +1,39 @@
-# Cross-chain Swaps using the Swing SDK in Next.js
+# Swing SDK Swap Component
 
-Altcoin is an example template showcasing how to use the [Swing SDK](https://developers.swing.xyz/reference/sdk) to integrate cross-chain swaps on a token website.
+This project implements a swap interface using the Swing SDK, React, and Web3React. It allows users to perform cross-chain token swaps with a simple and intuitive UI.
 
-This example is built with:
+## Features
 
-- [@swing.xyz/sdk](https://developers.swing.xyz/reference/sdk)
-- [@web3-react/core](https://docs.uniswap.org/sdk/web3-react/overview)
-- [@web3-react/metamask](https://www.npmjs.com/package/@web3-react/metamask)
-- [Next.js App Router](https://nextjs.org)
-- [Tailwind CSS](https://tailwindcss.com)
+- Cross-chain token swaps
+- Integration with Web3React for wallet connection
+- Dynamic loading of available chains and tokens
+- Real-time quote fetching
+- Transaction status tracking
 
-> "ALTCOIN" is a fake token used for demonstration purposes only.
+## Prerequisites
 
-## Demo
+- Node.js (version 12 or higher)
+- npm or yarn
+- MetaMask or another Web3 wallet
+- Swing SDK project ID from [Swing SDK](https://platform.swing.xyz)
+  
+## To get started with this 
 
-View the live demo https://swaps-sdk-nextjs.vercel.app/
+1. Clone the repository:
 
-## Swing Integration
-
-The [@swing.xyz/sdk](https://developers.swing.xyz/reference/sdk) can be found in [src/components/Swap.tsx](./src/components/Swap.tsx).
-
-It utilizes the SDK's `connect`, `getQuote` and `transfer` methods to interact with the customer's wallet, find the best route, and transfer the funds to a made up "ALTCOIN" token.
-
-## Getting started
-
-To get started with this template, first install the npm dependencies:
-
-```bash
-yarn install
-```
-
-Next, run the development server:
-
-```bash
-yarn dev --filter=swaps-sdk-nextjs-web3-react
-```
-
-Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
-
-## Customizing
-
-You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
+2. Install dependencies:
+ 
+   ```
+   yarn install
+   ```
+3. Replace the Swing SDK project ID in the swap.tsx file with your own project ID:
+   ```typescript
+   const projectId = 'YOUR_PROJECT_ID';
+   ```
+4. Start the development server:
+   ```
+   yarn dev
+   ```
+5. Open the app in your browser at http://localhost:3000
+   
+6. Connect your wallet and start swapping!

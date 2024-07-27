@@ -26,6 +26,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
 import { Input } from "@/ui/input";
 
 const Swap: React.FC = () => {
+  // State variables for managing the swap process
   const [isLoading, setIsLoading] = useState(false);
   const [routes, setRoutes] = useState<TransferRoute[] | null>(null);
   const [status, setStatus] = useState<TransferStepResult | null>(null);
@@ -33,6 +34,8 @@ const Swap: React.FC = () => {
   const [resultLogs, setResultLogs] = useState<
     { time: string; log?: string; logType?: string }[]
   >([]);
+
+  // Initial transfer parameters
   const [transferParams, setTransferParams] = useState<TransferParams>({
     amount: "0",
     fromChain: "ethereum",
@@ -42,6 +45,7 @@ const Swap: React.FC = () => {
     toToken: "MATIC",
     toUserAddress: "",
   });
+
   const [transferRoute, setTransferRoute] = useState<TransferRoute | null>(
     null
   );
@@ -50,14 +54,16 @@ const Swap: React.FC = () => {
   const [toTokens, setToTokens] = useState<Token[]>([]);
   const [balance, setBalance] = useState<string>("0");
 
+  // Web3React hooks for wallet connection
   const { connector, provider, account } = useWeb3React();
   const { toast } = useToast();
   const [swingSDK, setSwingSDK] = useState<SwingSDK | null>(null);
   const isConnected = swingSDK?.wallet.isConnected();
 
+  // Initialize Swing SDK
   useEffect(() => {
     const swing = new SwingSDK({
-      projectId: "replug",
+      projectId: "replug", // Replace with your project ID from https://platform.swing.xyz
       environment: "production",
       debug: true,
     });
@@ -80,6 +86,7 @@ const Swap: React.FC = () => {
       });
   }, []);
 
+  // Sync provider with Swing SDK when wallet is connected
   useEffect(() => {
     async function syncProviderWithSwingSDK() {
       if (swingSDK && provider && account) {
@@ -107,16 +114,19 @@ const Swap: React.FC = () => {
     transferParams.fromToken,
   ]);
 
+  // Update available tokens for the 'from' chain
   const updateFromTokens = (sdk: SwingSDK, chainSlug: ChainSlug) => {
     const tokens = sdk.getTokensForChain(chainSlug);
     setFromTokens(tokens);
   };
 
+  // Update available tokens for the 'to' chain
   const updateToTokens = (sdk: SwingSDK, chainSlug: ChainSlug) => {
     const tokens = sdk.getTokensForChain(chainSlug);
     setToTokens(tokens);
   };
 
+  // Update user's balance for the selected 'from' token
   const updateBalance = async () => {
     if (swingSDK && account) {
       const balance = await swingSDK.wallet.getBalance(
@@ -128,6 +138,7 @@ const Swap: React.FC = () => {
     }
   };
 
+  // Display error messages using toast
   const showError = (description: string) => {
     toast({
       title: "An Error Occurred",
@@ -136,6 +147,7 @@ const Swap: React.FC = () => {
     });
   };
 
+  // Connect wallet using Web3React
   const connectWallet = async () => {
     if (!swingSDK) return;
 
@@ -147,6 +159,7 @@ const Swap: React.FC = () => {
     }
   };
 
+  // Switch blockchain network
   const switchChain = async (chain: Chain) => {
     if (!swingSDK) return;
 
@@ -158,6 +171,7 @@ const Swap: React.FC = () => {
     }
   };
 
+  // Get quote for the swap
   const getQuote = async () => {
     if (!swingSDK) return;
 
@@ -183,6 +197,7 @@ const Swap: React.FC = () => {
     setIsLoading(false);
   };
 
+  // Start the transfer process
   const startTransfer = async () => {
     if (!swingSDK || !transferRoute) {
       showError("No route selected.");
@@ -194,6 +209,7 @@ const Swap: React.FC = () => {
       return;
     }
 
+    // Set up event listener for transfer status updates
     const transferListener = swingSDK.on(
       "TRANSFER",
       async (transferStepStatus, transferResults) => {
@@ -216,6 +232,7 @@ const Swap: React.FC = () => {
 
         console.log("TRANSFER:", transferStepStatus, transferResults);
 
+        // Handle different transfer statuses
         switch (transferStepStatus.status) {
           case "ACTION_REQUIRED":
             setResultLogs((prevItems) => [
@@ -266,6 +283,7 @@ const Swap: React.FC = () => {
     setIsLoading(false);
   };
 
+  // Render the Swap component UI
   return (
     <Card className="w-full max-w-md mx-auto p-4 bg-black rounded-none shadow-lg border-gray-800">
       <CardHeader className="mb-4">
@@ -274,6 +292,7 @@ const Swap: React.FC = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
+        {/* From Chain and Token selection */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label
@@ -339,6 +358,7 @@ const Swap: React.FC = () => {
           <LiaExchangeAltSolid className="text-3xl text-gray-400 transform rotate-90" />
         </div>
 
+        {/* To Chain and Token selection */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label
@@ -399,6 +419,7 @@ const Swap: React.FC = () => {
           </div>
         </div>
 
+        {/* Amount input */}
         <div className="space-y-2 mt-4">
           <label
             htmlFor="amount"
@@ -425,6 +446,7 @@ const Swap: React.FC = () => {
           </p>
         </div>
 
+        {/* Display swap quote */}
         {transferRoute && (
           <div className="mt-4 text-sm text-gray-100">
             <p>
@@ -434,6 +456,7 @@ const Swap: React.FC = () => {
           </div>
         )}
 
+        {/* Swap or Connect Wallet button */}
         {isConnected ? (
           <Button
             className="w-full mt-4 py-2 bg-white text-black  hover:bg-gray-200 rounded-none"
