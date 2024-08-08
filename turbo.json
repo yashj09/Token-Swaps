@@ -4,8 +4,7 @@
   "pipeline": {
     "build": {
       "outputs": [".next/**", "!.next/cache/**"],
-      "env": ["NEXT_PUBLIC_THIRD_WEB_CLIENT_ID", "THIRD_WEB_SECRET_KEY"],
-      "outputMode": "new-only"
+      "env": ["NEXT_PUBLIC_THIRD_WEB_CLIENT_ID", "THIRD_WEB_SECRET_KEY"]
     }
   }
 }
