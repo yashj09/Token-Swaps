@@ -9,7 +9,7 @@ const SwapSDK = dynamic(() => import("../Swap"), {
 
 function Hero() {
   return (
-    <div className="h-[100dvh] py-20 overflow-hidden lg:pb-32 xl:pb-36">
+    <div className="h-[100dvh] py-8 overflow-hidden ">
       <div className="w-full flex justify-center items-center">
         <SwapSDK />
       </div>
