@@ -1,33 +1,21 @@
-"use client";
-
 import "styles/globals.css";
 
-import { Web3ReactHooks, Web3ReactProvider, initializeConnector } from "@web3-react/core";
-import { MetaMask } from "@web3-react/metamask";
 import { Toaster } from "../components/ui/toaster";
-
-const [metaMask, hooks] = initializeConnector<MetaMask>(
-  (actions) => new MetaMask({
-    actions: {
-      startActivation: actions.startActivation,
-      update: actions.update,
-      resetState: actions.resetState,
-    }
-  })
-);
-
-const connectors: [MetaMask, Web3ReactHooks][] = [[metaMask, hooks]];
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+import Provider from "@/lib/provider";
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
       <body className="bg-black text-white">
-        <Web3ReactProvider connectors={connectors}>
+        <Provider>
           <main>{children}</main>
-        </Web3ReactProvider>
+        </Provider>
         <Toaster />
       </body>
     </html>
-  )
+  );
 }
