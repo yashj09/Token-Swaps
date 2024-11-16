@@ -9,20 +9,18 @@ import {
   BarChart,
   Shield,
 } from "lucide-react";
+import Link from "next/link";
 
 export default function TokenSwapLanding() {
-  let c: string = "yash";
-  let a: number = 565;
-  let bool: boolean = true;
   return (
     <div className="min-h-screen bg-black text-white">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
         <div className="text-2xl font-bold">TokenSwap</div>
         <Button
           variant="outline"
-          className="text-white border-white hover:bg-white hover:text-black"
+          className="text-black border-white hover:bg-white hover:text-black"
         >
-          Launch App
+          <Link href={"/swap"}> Launch App</Link>
         </Button>
       </header>
 
@@ -36,7 +34,7 @@ export default function TokenSwapLanding() {
             chains with low fees and high liquidity.
           </p>
           <Button className="bg-white text-black hover:bg-gray-200">
-            Get Started
+            <Link href={"/swap"}> Get Started</Link>
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </section>
@@ -81,7 +79,7 @@ export default function TokenSwapLanding() {
             token swaps.
           </p>
           <Button className="bg-white text-black hover:bg-gray-200">
-            Launch App
+            <Link href={"/swap"}> Launch App</Link>{" "}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </section>
