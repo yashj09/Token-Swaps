@@ -1,4 +1,4 @@
-"'use client'";
+"use client";
 
 import { Button } from "@/ui/Button";
 import {
@@ -10,7 +10,10 @@ import {
   Shield,
 } from "lucide-react";
 
-export function TokenSwapLanding() {
+export default function TokenSwapLanding() {
+  let c: string = "yash";
+  let a: number = 565;
+  let bool: boolean = true;
   return (
     <div className="min-h-screen bg-black text-white">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">

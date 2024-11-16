@@ -64,7 +64,7 @@ const Swap: React.FC = () => {
   // Initialize Swing SDK
   useEffect(() => {
     const swing = new SwingSDK({
-      projectId: "replug", // Replace with your project ID from https://platform.swing.xyz
+      projectId: process.env.SWAP_PROJECT_ID as string, // Replace with your project ID from https://platform.swing.xyz
       environment: "production",
       debug: true,
     });
