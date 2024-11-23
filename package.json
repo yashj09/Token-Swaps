@@ -19,6 +19,8 @@
     "clean": "rm -rf .next node_modules"
   },
   "dependencies": {
+    "@account-kit/infra": "^4.5.1",
+    "@account-kit/react": "^4.5.1",
     "@headlessui/react": "^1.7.18",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.1.0",
@@ -29,6 +31,7 @@
     "@radix-ui/react-toast": "^1.1.5",
     "@swing.xyz/sdk": "^0.53.2",
     "@tailwindcss/forms": "^0.5.7",
+    "@tanstack/react-query": "^5.61.0",
     "@web3-react/core": "8.2.3",
     "@web3-react/metamask": "^8.2.4",
     "class-variance-authority": "^0.7.0",
@@ -42,18 +45,20 @@
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
     "use-debounce": "^10.0.0",
-    "vaul": "^0.9.0"
+    "vaul": "^0.9.0",
+    "viem": "2.20.0",
+    "wagmi": "2.12.7"
   },
   "devDependencies": {
     "@types/node": "20.12.4",
     "@types/react": "18.2.74",
     "@types/react-dom": "18.2.24",
-    "autoprefixer": "^10.4.19",
+    "autoprefixer": "^10.4.20",
     "eslint": "^8.57.0",
     "eslint-config-examples": "file:./packages/config-eslint",
     "pino-pretty": "^10.3.1",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.7",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
     "typescript": "^5.4.4",
     "typescript-config": "file:./packages/config-typescript"
   }
