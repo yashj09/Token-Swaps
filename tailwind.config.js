@@ -1,6 +1,22 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 const plugin = require("tailwindcss/plugin");
+import { withAccountKitUi, createColorSet } from "@account-kit/react/tailwind";
 
+// wrap your existing tailwind config with 'withAccountKitUi'
+export default withAccountKitUi(
+  {
+    // your tailwind config here
+    // docs on setting up tailwind here: https://tailwindcss.com/docs/installation/using-postcss
+  },
+  {
+    // override account kit themes
+    colors: {
+      "btn-primary": createColorSet("#E82594", "#66fff3"),
+      "fg-accent-brand": createColorSet("#E82594", "#66fff3"),
+    },
+    borderRadius: "lg",
+  }
+);
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
