@@ -32,8 +32,8 @@ export default function TokenSwapLanding() {
           <>Loading...</>
         ) : user ? (
           <div className="flex flex-col gap-2 p-2">
-            <p className="text-xl font-bold">Success!</p>
-            Logged in as {user.email ?? "anon"}.
+            {/* <p className="text-xl font-bold">Success!</p> */}
+            {/* Logged in as {user.email ?? "anon"}. */}
             <Button
               variant="outline"
               className="text-black border-white hover:bg-white hover:text-black"
