@@ -10,20 +10,20 @@ import SwingSDK, {
   ChainSlug,
   TokenSymbol,
 } from "@swing.xyz/sdk";
-import { Button } from "@/ui/Button";
-import { Label } from "@/ui/label";
+import { Button } from "./components/ui/button";
+import { Label } from "./components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/ui/select";
-import { useToast } from "@/ui/use-toast";
+} from "./components/ui/select";
+import { useToast } from "./hooks/use-toast";
 import { LiaExchangeAltSolid } from "react-icons/lia";
-import { StatusSheet } from "@/ui/StatusSheet";
-import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
-import { Input } from "@/ui/input";
+import { StatusSheet } from "./components/ui/StatusSheet";
+import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
+import { Input } from "./components/ui/input";
 
 const Swap: React.FC = () => {
   // State variables for managing the swap process

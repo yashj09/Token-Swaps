@@ -6,7 +6,7 @@ import {
   useUser,
 } from "@account-kit/react";
 
-export default function Login() {
+export default function Home() {
   const user = useUser();
   const { openAuthModal } = useAuthModal();
   const signerStatus = useSignerStatus();
@@ -19,16 +19,13 @@ export default function Login() {
       ) : user ? (
         <div className="flex flex-col gap-2 p-2">
           <p className="text-xl font-bold">Success!</p>
-          You're logged in as {user.email ?? "anon"}.
-          <button
-            className="akui-btn akui-btn-primary mt-6"
-            onClick={() => logout()}
-          >
+          Logged in as {user.email ?? "anon"}.
+          <button className="btn btn-primary mt-6" onClick={() => logout()}>
             Log out
           </button>
         </div>
       ) : (
-        <button className="akui-btn akui-btn-primary" onClick={openAuthModal}>
+        <button className="btn btn-primary" onClick={openAuthModal}>
           Login
         </button>
       )}

@@ -1,6 +1,12 @@
 "use client";
+import {
+  useAuthModal,
+  useLogout,
+  useSignerStatus,
+  useUser,
+} from "@account-kit/react";
 
-import { Button } from "@/ui/Button";
+import { Button } from "../components/components/ui/button";
 import {
   ArrowRight,
   Repeat,
@@ -12,16 +18,39 @@ import {
 import Link from "next/link";
 
 export default function TokenSwapLanding() {
+  const user = useUser();
+  const { openAuthModal } = useAuthModal();
+  const signerStatus = useSignerStatus();
+  const { logout } = useLogout();
+
   return (
     <div className="min-h-screen bg-black text-white">
       <header className="container mx-auto px-4 py-6 flex justify-between items-center">
         <div className="text-2xl font-bold">TokenSwap</div>
-        <Button
-          variant="outline"
-          className="text-black border-white hover:bg-white hover:text-black"
-        >
-          <Link href={"/swap"}> Launch App</Link>
-        </Button>
+
+        {signerStatus.isInitializing ? (
+          <>Loading...</>
+        ) : user ? (
+          <div className="flex flex-col gap-2 p-2">
+            <p className="text-xl font-bold">Success!</p>
+            Logged in as {user.email ?? "anon"}.
+            <Button
+              variant="outline"
+              className="text-black border-white hover:bg-white hover:text-black"
+              onClick={() => logout()}
+            >
+              Log out
+            </Button>
+          </div>
+        ) : (
+          <Button
+            variant="outline"
+            className="text-black border-white hover:bg-white hover:text-black"
+            onClick={openAuthModal}
+          >
+            Login
+          </Button>
+        )}
       </header>
 
       <main className="container mx-auto px-4 py-12">

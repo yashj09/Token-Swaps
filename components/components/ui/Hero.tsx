@@ -3,7 +3,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 
-const SwapSDK = dynamic(() => import("../Swap"), {
+const SwapSDK = dynamic(() => import("../../Swap"), {
   ssr: false,
 });
 

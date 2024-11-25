@@ -5,10 +5,10 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-} from "@/ui/drawer";
-import { Button } from "../ui/Button";
+} from "./drawer";
+import { Button } from "./button";
 import clsx from "clsx";
-import { ScrollArea } from "@/ui/scroll-area";
+import { ScrollArea } from "./scroll-area";
 
 export interface MessageLog {
   time: string;
@@ -83,7 +83,7 @@ export const StatusSheet = ({
           <DrawerFooter>
             <Button
               className={clsx(
-                "w-full flex items-center cursor-pointer bg-red-400",
+                "w-full flex items-center cursor-pointer bg-red-400"
               )}
               onClick={onCancel}
             >
