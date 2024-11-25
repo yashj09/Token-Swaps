@@ -11,6 +11,7 @@
   "version": "0.0.1",
   "private": true,
   "packageManager": "yarn@1.22.22",
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "lint": "eslint src",
@@ -19,6 +20,7 @@
     "clean": "rm -rf .next node_modules"
   },
   "dependencies": {
+    "@account-kit/core": "^4.5.1",
     "@account-kit/infra": "^4.5.1",
     "@account-kit/react": "^4.5.1",
     "@headlessui/react": "^1.7.18",
@@ -36,6 +38,7 @@
     "@web3-react/metamask": "^8.2.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "encoding": "^0.1.13",
     "framer-motion": "^6.5.1",
     "lucide-react": "^0.364.0",
     "next": "14.1.4",

@@ -15,7 +15,7 @@ const uiConfig: AlchemyAccountsUIConfig = {
         {
           type: "external_wallets",
           walletConnect: {
-            projectId: process.env.WALLET_CONNECT_API_KEY as string,
+            projectId: "f2852f28d4889451cbf6ef6a35a2206c",
           },
         },
       ],
@@ -29,7 +29,7 @@ export const config = createConfig(
     // if you don't want to leak api keys, you can proxy to a backend and set the rpcUrl instead here
     // get this from the app config you create at https://dashboard.alchemy.com/accounts?utm_source=demo_alchemy_com&utm_medium=referral&utm_campaign=demo_to_dashboard
     transport: alchemy({
-      apiKey: process.env.ALCHEMY_ACCOUNT_KIT_API_KEY as string,
+      apiKey: "3b2b2e7b-0b2b-4b2b-8b2b-2b2b2b2b2b2b",
     }),
     chain: sepolia,
     ssr: true, // set to false if you're not using server-side rendering
