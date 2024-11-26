@@ -31,7 +31,7 @@ const uiConfig: AlchemyAccountsUIConfig = {
 export const config = createConfig(
   {
     transport: alchemy({
-      apiKey: p"OOXyk0zH_dpjQnEQeZTz3TJxDNjz8Gir",
+      apiKey: "OOXyk0zH_dpjQnEQeZTz3TJxDNjz8Gir",
     }), // TODO: add your Alchemy API key - https://dashboard.alchemy.com/accounts
     chain: sepolia,
     ssr: true, // more about ssr: https://accountkit.alchemy.com/react/ssr
