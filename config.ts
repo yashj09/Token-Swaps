@@ -19,7 +19,7 @@ const uiConfig: AlchemyAccountsUIConfig = {
         {
           type: "external_wallets",
           walletConnect: {
-            projectId: process.env.WALLET_CONNECT_API_KEY as string,
+            projectId: "f2852f28d4889451cbf6ef6a35a2206c",
           },
         },
       ],
@@ -31,7 +31,7 @@ const uiConfig: AlchemyAccountsUIConfig = {
 export const config = createConfig(
   {
     transport: alchemy({
-      apiKey: process.env.ALCHEMY_ACCOUNT_KIT_API_KEY as string,
+      apiKey: p"OOXyk0zH_dpjQnEQeZTz3TJxDNjz8Gir",
     }), // TODO: add your Alchemy API key - https://dashboard.alchemy.com/accounts
     chain: sepolia,
     ssr: true, // more about ssr: https://accountkit.alchemy.com/react/ssr
